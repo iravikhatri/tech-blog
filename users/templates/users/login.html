@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <div class="content-section">
+    <!-- <div class="content-section">
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
@@ -15,5 +15,30 @@
                 Need an account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
             </div>
         </form>
-    </div>
+    </div> -->
+
+    <section class="form-cover">
+        <div class="flex justify-center content-center">
+            <div class="md:mt-16 px-5 py-5 md:px-5 md:py-5 lg:w-5/12">
+                <div class="mb-5">
+                    <h2 class="text-3xl text-indigo-700 font-bold">Hello, welcome back again —</h2>
+                    <h5 class="text-lg text-gray-700 -mt-1 font-medium">Fill your login credentails.</h5>
+                </div>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="w-full mb-6">
+                        <label class="block text-gray-700 mb-2" for="username">Enter your email address:</label>
+                        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border-2 border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-500" id="username" type="text" placeholder="Username">
+                    </div>
+                    <div class="w-full mb-8">
+                        <label class="block text-gray-700 mb-2" for="password">Enter your password:</label>
+                        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border-2 border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-500" id="password" type="password" placeholder="Password">
+                    </div>
+                    <div class="w-full">
+                        <button class="bg-indigo-700 rounded text-white px-8 py-2" type="button">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 {% endblock content %}

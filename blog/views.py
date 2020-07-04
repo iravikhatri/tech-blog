@@ -7,8 +7,8 @@ def home(request):
     }
     return render(request, 'blog/home.html', context)
 
-def about(request):
+def work(request):
     context = {
-        'title': "About"
+        'title': "Work"
     }
-    return render(request, 'blog/about.html', context)
+    return render(request, 'blog/work.html', context)
