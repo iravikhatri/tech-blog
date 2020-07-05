@@ -16,13 +16,13 @@
 
 </head>
 <body>
-    <header class="text-gray-700 body-font shadow-xs bg-white sticky top-0">
+    <header class="text-gray-700 body-font shadow-md bg-white sticky top-0">
         <div class="flex flex-wrap px-8 py-3 flex-col md:flex-row items-center">
             <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="{% url 'blog-home' %}">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                <svg width="35" height="35" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M200 100C200 155.228 155.228 200 100 200C44.7715 200 0 155.228 0 100C0 44.7715 44.7715 0 100 0C155.228 0 200 44.7715 200 100ZM95.4062 66.9688V52.625H31.1641V66.9688H62.8047V155H80.4531V66.9688H95.4062ZM112.375 52.625H130.492C142.07 52.625 150.883 54.9453 156.93 59.5859C162.977 64.2266 166 71.1406 166 80.3281C166 85.0156 164.734 89.2344 162.203 92.9844C159.672 96.7344 155.969 99.6406 151.094 101.703C156.625 103.203 160.891 106.039 163.891 110.211C166.938 114.336 168.461 119.305 168.461 125.117C168.461 134.727 165.367 142.109 159.18 147.266C153.039 152.422 144.227 155 132.742 155H95.4062V66.9688H112.375V52.625ZM113.195 108.805V140.797H132.953C138.531 140.797 142.891 139.414 146.031 136.648C149.172 133.883 150.742 130.039 150.742 125.117C150.742 114.477 145.305 109.039 134.43 108.805H113.195ZM113.195 95.7266H130.633C136.164 95.7266 140.477 94.4844 143.57 92C146.711 89.4688 148.281 85.9062 148.281 81.3125C148.281 76.25 146.828 72.5938 143.922 70.3438C141.062 68.0938 136.586 66.9688 130.492 66.9688H113.195V95.7266Z" fill="black"/>
                 </svg>
-                <span class="ml-3 text-xl">Tech-Blog</span>
+                <span class="ml-2 text-xl">TechBlog</span>
             </a>
             <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
                 <a class="mr-5 hover:text-gray-900" href="{% url 'blog-home' %}">Home</a>
@@ -31,30 +31,26 @@
                 <a class="mr-5 hover:text-gray-900" href="#">About</a>
                 <a class="mr-5 hover:text-gray-900" href="#">Contact</a>
                 <a class="mr-5 hover:text-gray-900" href="#">Blog</a>
+                {% if user.is_authenticated %}
+                    <a class="mr-5 hover:text-gray-900" href="{% url 'users-logout' %}">Logout</a>
+                {% endif %}
             </nav>
         </div>
     </header>
 
     <main role="main" class="container mx-auto">
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="text-white bg-indigo-800 body-font">
+    <footer class="bg-gray-200 text-black">
         <div class="container px-5 py-8 md:px-0 py-8 mx-auto flex items-center sm:flex-row flex-col">
             <a class="flex title-font font-medium items-center md:justify-start justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                <svg width="35" height="35" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M200 100C200 155.228 155.228 200 100 200C44.7715 200 0 155.228 0 100C0 44.7715 44.7715 0 100 0C155.228 0 200 44.7715 200 100ZM95.4062 66.9688V52.625H31.1641V66.9688H62.8047V155H80.4531V66.9688H95.4062ZM112.375 52.625H130.492C142.07 52.625 150.883 54.9453 156.93 59.5859C162.977 64.2266 166 71.1406 166 80.3281C166 85.0156 164.734 89.2344 162.203 92.9844C159.672 96.7344 155.969 99.6406 151.094 101.703C156.625 103.203 160.891 106.039 163.891 110.211C166.938 114.336 168.461 119.305 168.461 125.117C168.461 134.727 165.367 142.109 159.18 147.266C153.039 152.422 144.227 155 132.742 155H95.4062V66.9688H112.375V52.625ZM113.195 108.805V140.797H132.953C138.531 140.797 142.891 139.414 146.031 136.648C149.172 133.883 150.742 130.039 150.742 125.117C150.742 114.477 145.305 109.039 134.43 108.805H113.195ZM113.195 95.7266H130.633C136.164 95.7266 140.477 94.4844 143.57 92C146.711 89.4688 148.281 85.9062 148.281 81.3125C148.281 76.25 146.828 72.5938 143.922 70.3438C141.062 68.0938 136.586 66.9688 130.492 66.9688H113.195V95.7266Z" fill="black"/>
                 </svg>
-                <span class="ml-3 text-xl">Tech-Blog</span>
+                <span class="ml-2 text-xl">TechBlog</span>
             </a>
-            <p class="text-sm sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2020 tech-blog —
+            <p class="text-sm sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2020 techblog —
                 <a href="https://twitter.com/knyttneve" class="ml-1" rel="noopener noreferrer" target="_blank">@techblog</a>
             </p>
             <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
